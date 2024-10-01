@@ -1,0 +1,33 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+const port = process.env.PORT || 3000;
+app.use(bodyParser.json())
+console.log(app.all);
+app.get('/',function(req,res){
+    console.log(req.body["name"]);
+    res.status(401).send("Hello World!");
+
+})
+app.post("/tesla",(req,res)=>{
+    // console.log(req.headers)
+    const message = req.query.message;
+    console.log(message);
+    res.send(message);})
+app.post("/tesla",(req,res)=>{
+    // console.log(req.headers)
+    res.send("2+2=4")
+})
+
+app.get("/files",(req,res)=>{
+    res.json({
+        name:"purav",
+        age:21
+    })
+});
+
+app.listen(port,()=>{
+    console.log(port);
+    console.log("Server is running at http://localhost:3000 : ${port}")
+});
